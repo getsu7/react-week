@@ -1,16 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './src/assets/views/login';
 
 export default function App() {
+    const Stack = createNativeStackNavigator();
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-          style={styles.button}
-          onPress={() => Alert.alert('Button with adjusted color pressed')}
-      >
-          <Text>Touchable Button</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
+        <NavigationContainer initialRouteName="Login">
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Login"
+                    component={Login}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     </View>
   );
 }
